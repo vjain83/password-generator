@@ -17,12 +17,11 @@ function generatePassword() {
 
   var passwordLength = window.prompt("Give the length of the password between 8 to 128 Characters!");
   var lengthConfirm = parseInt(passwordLength);
-  console.log(lengthConfirm);
 
   if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     alert("Enter a Valid number of Character");
 
-    return (generatePassword);
+    return generatePassword();
   }
 
 
@@ -64,9 +63,20 @@ function generatePassword() {
 
     }
   }
+  var randomPassword = " ";
+  for (var i = 0; i < lengthConfirm; i++) {
+    criteria[
+      Math.floor(Math.random() * criteria.length)];
+    randomPassword +=
+      criteria[
+      Math.floor(Math.random() * criteria.length)
+      ];
 
+  }
 
-}
+  return randomPassword;
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
