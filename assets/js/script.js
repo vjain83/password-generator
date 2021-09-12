@@ -27,10 +27,10 @@ function generatePassword() {
 
   // Array formation to generate random password
   var criteria = [];
-  var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(" ");
-  var lowerCaseChar = "abcdefghijklmanopqrstuvwxyz".split(" ");
-  var numberChar = "0123456789".split(" ");
-  var specialChar = "*&^%$#@!?><{}".split(" ");
+  var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerCaseChar = "abcdefghijklmanopqrstuvwxyz";
+  var numberChar = "0123456789";
+  var specialChar = "*&^%$#@!?><{}";
 
   // loop for all character set
   var upperCaseConfirm = window.confirm("Do You want your password to include uppercase?");
@@ -63,7 +63,7 @@ function generatePassword() {
 
     }
   }
-  var randomPassword = " ";
+  var randomPassword = "";
   for (var i = 0; i < lengthConfirm; i++) {
     criteria[
       Math.floor(Math.random() * criteria.length)];
