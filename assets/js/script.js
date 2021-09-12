@@ -26,7 +26,7 @@ function generatePassword() {
 
 
   // Array formation to generate random password
-  var criteria = [];
+  var criteria = "";
   var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowerCaseChar = "abcdefghijklmanopqrstuvwxyz";
   var numberChar = "0123456789";
@@ -35,43 +35,28 @@ function generatePassword() {
   // loop for all character set
   var upperCaseConfirm = window.confirm("Do You want your password to include uppercase?");
   if (upperCaseConfirm === true) {
-    for (var i = 0; i < upperCaseChar.length; i++) {
-      criteria.push(upperCaseChar[i]);
-
-    }
+    criteria += upperCaseChar;
   }
 
   var lowerCaseConfirm = window.confirm("Do You want your password to include lowercase?");
   if (lowerCaseConfirm === true) {
-    for (var i = 0; i < lowerCaseChar.length; i++) {
-      criteria.push(lowerCaseChar[i]);
-    }
+    criteria += lowerCaseChar;
   }
 
   var numberConfirm = window.confirm("Do You want your password to include Numbers?");
   if (numberConfirm === true) {
-    for (var i = 0; i < numberChar.length; i++) {
-      criteria.push(numberChar[i]);
-    }
-
+    criteria += numberChar;
   }
 
   var specialConfirm = window.confirm("Do You want your password to include special characters?");
   if (specialConfirm === true) {
-    for (var i = 0; i < specialChar.length; i++) {
-      criteria.push(specialChar[i]);
-
-    }
+    criteria += specialChar;
   }
+
   var randomPassword = "";
   for (var i = 0; i < lengthConfirm; i++) {
-    criteria[
-      Math.floor(Math.random() * criteria.length)];
-    randomPassword +=
-      criteria[
-      Math.floor(Math.random() * criteria.length)
-      ];
-
+    var index = Math.floor(Math.random() * criteria.length);
+    randomPassword += criteria[index];
   }
 
   return randomPassword;
