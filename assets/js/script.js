@@ -12,27 +12,14 @@ function writePassword() {
 
 }
 
-// function to get passwors length
-function generatePassword() {
-
-  var passwordLength = window.prompt("Give the length of the password between 8 to 128 Characters!");
-  var lengthConfirm = parseInt(passwordLength);
-
-  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-    alert("Enter a Valid number of Character");
-
-    return generatePassword();
-  }
-
-
-  // Array formation to generate random password
+// function to get password criteria
+function selectCriteria() {
   var criteria = "";
   var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowerCaseChar = "abcdefghijklmanopqrstuvwxyz";
   var numberChar = "0123456789";
   var specialChar = "*&^%$#@!?><{}";
 
-  // loop for all character set
   var upperCaseConfirm = window.confirm("Do You want your password to include uppercase?");
   if (upperCaseConfirm === true) {
     criteria += upperCaseChar;
@@ -53,8 +40,33 @@ function generatePassword() {
     criteria += specialChar;
   }
 
+  // check when none of the criteria is selected
+  if (!upperCaseConfirm && !lowerCaseConfirm && !numberConfirm && !specialConfirm) {
+    alert("You need to Select atleast one criteria for the Password!");
+    return selectCriteria();
+  }
+
+  return criteria;
+}
+// function the get password length
+function getPasswordLength() {
+  var passwordLength = window.prompt("Give the length of the password between 8 to 128 Characters!");
+
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    alert("Enter a Valid number of Character");
+    return getPasswordLength();
+  }
+  var lengthConfirm = parseInt(passwordLength);
+
+  return lengthConfirm;
+}
+// Function to generate password
+function generatePassword() {
+  var passwordLength = getPasswordLength();
+  var criteria = selectCriteria();
+
   var randomPassword = "";
-  for (var i = 0; i < lengthConfirm; i++) {
+  for (var i = 0; i < passwordLength; i++) {
     var index = Math.floor(Math.random() * criteria.length);
     randomPassword += criteria[index];
   }
@@ -64,4 +76,3 @@ function generatePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
